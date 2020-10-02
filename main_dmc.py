@@ -1,23 +1,24 @@
+import argparse
 import datetime
 import os
-import argparse
-import torch
 
-from rlpyt.samplers.collections import TrajInfo
+import torch
 from rlpyt.runners.minibatch_rl import MinibatchRlEval, MinibatchRl
+from rlpyt.samplers.collections import TrajInfo
 from rlpyt.samplers.serial.sampler import SerialSampler
 from rlpyt.utils.logging.context import logger_context
 
 from dreamer.agents.dmc_dreamer_agent import DMCDreamerAgent
 from dreamer.algos.dreamer_algo import Dreamer
-from dreamer.envs.dmc import DeepMindControl
-from dreamer.envs.time_limit import TimeLimit
 from dreamer.envs.action_repeat import ActionRepeat
+from dreamer.envs.dmc import DeepMindControl
 from dreamer.envs.normalize_actions import NormalizeActions
+from dreamer.envs.time_limit import TimeLimit
 from dreamer.envs.wrapper import make_wapper
 
 
-def build_and_train(log_dir, game="cartpole_balance", run_ID=0, cuda_idx=None, eval=False, save_model='last', load_model_path=None):
+def build_and_train(log_dir, game="cartpole_balance", run_ID=0, cuda_idx=None, eval=False, save_model='last',
+                    load_model_path=None):
     params = torch.load(load_model_path) if load_model_path else {}
     agent_state_dict = params.get('agent_state_dict')
     optimizer_state_dict = params.get('optimizer_state_dict')
@@ -41,7 +42,7 @@ def build_and_train(log_dir, game="cartpole_balance", run_ID=0, cuda_idx=None, e
     )
     algo = Dreamer(initial_optim_state_dict=optimizer_state_dict)  # Run with defaults.
     agent = DMCDreamerAgent(train_noise=0.3, eval_noise=0, expl_type="additive_gaussian",
-                              expl_min=None, expl_decay=None, initial_model_state_dict=agent_state_dict)
+                            expl_min=None, expl_decay=None, initial_model_state_dict=agent_state_dict)
     runner_cls = MinibatchRlEval if eval else MinibatchRl
     runner = runner_cls(
         algo=algo,

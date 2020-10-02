@@ -1,7 +1,8 @@
-import torch
-import torch.nn.functional as F
-import torch.distributions
 import numpy as np
+import torch
+import torch.distributions
+import torch.nn.functional as F
+
 
 class TanhBijector(torch.distributions.Transform):
     def __init__(self):

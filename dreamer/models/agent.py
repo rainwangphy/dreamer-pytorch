@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 from rlpyt.utils.buffer import buffer_func
 from rlpyt.utils.collections import namedarraytuple
-from rlpyt.utils.tensor import infer_leading_dims, restore_leading_dims, to_onehot, from_onehot
+from rlpyt.utils.tensor import infer_leading_dims, restore_leading_dims
 
 from dreamer.models.action import ActionDecoder
 from dreamer.models.dense import DenseModel

@@ -1,15 +1,13 @@
-
-import numpy as np
 import os
-import atari_py
-import cv2
 from collections import namedtuple
 
+import atari_py
+import cv2
+import numpy as np
 from rlpyt.envs.base import Env, EnvStep
+from rlpyt.samplers.collections import TrajInfo
 from rlpyt.spaces.int_box import IntBox
 from rlpyt.utils.quick_args import save__init__args
-from rlpyt.samplers.collections import TrajInfo
-
 
 # W, H = (80, 104)  # Crop two rows, then downsample by 2x (fast, clean image).
 
@@ -81,7 +79,7 @@ class AtariEnv(Env):
         game_path = atari_py.get_game_path(game)
         if not os.path.exists(game_path):
             raise IOError("You asked for game {} but path {} does not "
-                " exist".format(game, game_path))
+                          " exist".format(game, game_path))
         self.ale = atari_py.ALEInterface()
         self.ale.setFloat(b'repeat_action_probability', repeat_action_probability)
         self.ale.loadROM(game_path)
@@ -92,7 +90,7 @@ class AtariEnv(Env):
         self._frame_shape = frame_shape
         obs_shape = (num_img_obs, frame_shape[1], frame_shape[0])
         self._observation_space = IntBox(low=0, high=255, shape=obs_shape,
-            dtype="uint8")
+                                         dtype="uint8")
         self._max_frame = self.ale.getScreenGrayscale()
         self._raw_frame_1 = self._max_frame.copy()
         self._raw_frame_2 = self._max_frame.copy()

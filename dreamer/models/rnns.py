@@ -2,10 +2,8 @@ import torch
 import torch.distributions as td
 import torch.nn as nn
 import torch.nn.functional as tf
-from rlpyt.utils.collections import namedarraytuple
 from rlpyt.utils.buffer import buffer_method
-
-from dreamer.utils.module import FreezeParameters
+from rlpyt.utils.collections import namedarraytuple
 
 RSSMState = namedarraytuple('RSSMState', ['mean', 'std', 'stoch', 'deter'])
 

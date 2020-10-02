@@ -1,7 +1,7 @@
 import torch
 
-from dreamer.models.rnns import RSSMState, RSSMTransition, RSSMRepresentation, RSSMRollout
 from dreamer.models.distribution import SampleDist
+from dreamer.models.rnns import RSSMState, RSSMTransition, RSSMRepresentation, RSSMRollout
 
 
 def test_rssm():

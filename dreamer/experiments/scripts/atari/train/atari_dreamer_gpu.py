@@ -11,9 +11,9 @@ from rlpyt.utils.launching.affinity import affinity_from_code
 from rlpyt.utils.launching.variant import load_variant, update_config
 from rlpyt.utils.logging.context import logger_context
 
-from dreamer.experiments.configs.atari.atari_dreamer import configs
-from dreamer.algos.dreamer_algo import Dreamer
 from dreamer.agents.atari_dreamer_agent import AtariDreamerAgent
+from dreamer.algos.dreamer_algo import Dreamer
+from dreamer.experiments.configs.atari.atari_dreamer import configs
 
 
 def build_and_train(slot_affinity_code, log_dir, run_ID, config_key):

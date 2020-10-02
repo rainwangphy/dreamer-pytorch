@@ -2,8 +2,8 @@ import pytest
 import torch
 import torch.distributions
 
-from dreamer.models.observation import ObservationEncoder, ObservationDecoder, conv_out, conv_out_shape, \
-    output_padding, output_padding_shape
+from dreamer.models.observation import ObservationEncoder, ObservationDecoder, conv_out_shape, \
+    output_padding_shape
 
 
 def test_observation_encoder(shape=(3, 64, 64)):

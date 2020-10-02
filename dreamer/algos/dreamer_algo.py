@@ -1,4 +1,3 @@
-import numpy as np
 import torch
 from rlpyt.algos.base import RlAlgorithm
 from rlpyt.replays.sequence.n_step import SamplesFromReplay

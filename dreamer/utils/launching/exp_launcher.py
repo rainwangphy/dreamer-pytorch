@@ -1,11 +1,11 @@
 """
 Slightly modified from rlpyt.utils.launching.exp_launcher
 """
-import subprocess
-import time
+import datetime
 import os
 import os.path as osp
-import datetime
+import subprocess
+import time
 
 from rlpyt.utils.launching.affinity import get_n_run_slots, prepend_run_slot, affinity_from_code
 # from rlpyt.utils.logging.context import get_log_dir
